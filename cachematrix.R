@@ -1,8 +1,4 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-
-#Creates a object with 4 functions:
+## Creates an object with 4 functions:
 # - set(): Stores a matrix
 # - get(): Gets the stored matrix. NULL if nothing was stored
 # - setinv(matrix): Stores a matrix (which is supposed to be the inverse of the stored matrix)
@@ -35,7 +31,7 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## cacheSolve retireves the inv of a matrix stored in an object created with makeCacheMatrix()
+## cacheSolve retrieves the inv of a matrix stored in an object created with makeCacheMatrix()
 ## If it is already calculated retrieves the cached value, otherwise calculates and stores it
 
 cacheSolve <- function(x, ...) {
@@ -52,7 +48,7 @@ cacheSolve <- function(x, ...) {
     #Get the matrix
     data <- x$get()
     #Solve it
-    inv <- solve(data, ...)
+    inv <- solve(data, ...) ## ... just in case we need to pass arguments to solve.
     #Store it
     x$setinv(inv)
     #return the inverse matrix
