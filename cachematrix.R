@@ -33,6 +33,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## cacheSolve retrieves the inv of a matrix stored in an object created with makeCacheMatrix()
 ## If it is already calculated retrieves the cached value, otherwise calculates and stores it
+# x should be a matrix (we assume inverse exists)
+# ... are parameters that will be passed to the solve function if needed.
 
 cacheSolve <- function(x, ...) {
   #Get the inversed matrix
@@ -43,7 +45,7 @@ cacheSolve <- function(x, ...) {
     message("This was cached")
     return(m)
   }else{
-    #If not, calculate and store it
+    #If not cached, calculate and store it
     message("This was NOT cached")
     #Get the matrix
     data <- x$get()
@@ -51,7 +53,7 @@ cacheSolve <- function(x, ...) {
     inv <- solve(data, ...) ## ... just in case we need to pass arguments to solve.
     #Store it
     x$setinv(inv)
-    #return the inverse matrix
+    #Return the inverse matrix
     return(inv)
   }
 }
